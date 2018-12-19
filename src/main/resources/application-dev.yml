@@ -18,9 +18,9 @@ spring:
     show: true
 
   datasource:
-    url: jdbc:mysql://bizvane-2018.mysql.polardb.rds.aliyuncs.com:3306/bizvane-test?useUnicode=true&characterEncoding=utf-8
-    username: bizvane_2018
-    password: SF_bizvane20180613
+    url: jdbc:mysql://127.0.0.1:3306/bizvane-test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 1234
     driver-class-name: com.mysql.jdbc.Driver
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
