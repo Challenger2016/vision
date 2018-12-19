@@ -8,7 +8,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(scanBasePackages = "com.healthy")
 @EnableSwagger2
-@MapperScan(basePackages="com.healthy.vision.mappers")
+@MapperScan("com.healthy.vision.mappers")
 public class VisionApplication {
 
 	public static void main(String[] args) {
