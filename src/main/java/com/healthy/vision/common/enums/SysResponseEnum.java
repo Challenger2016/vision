@@ -27,6 +27,8 @@ public enum SysResponseEnum {
     USER_LOGIN_FAILED_USERID_NOT_EXISTS(109, "登录失败，用户名不存在！"),
     USER_BIND_THIRD_LOGIN_ERROR(110, "登录失败，用户被禁用！"),
     USER_LOGIN_FAILED_USER_DISABLE(111, "登录失败，密码错误！"),
+    USER_LOGIN_FAILED(120, "登录失败，用户名或密码错误！"),
+    
     USER_UPDATE_ERROR(112, "修改用户失败！"),
     USER_MIBILE_NOT_EXIST(113, "该手机号不存在！"),
 
