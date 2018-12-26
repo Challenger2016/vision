@@ -1,75 +1,75 @@
 package com.healthy.vision.mappers;
 
-import com.healthy.vision.entity.po.WxPublicPO;
-import com.healthy.vision.entity.po.WxPublicPOExample;
+import com.healthy.vision.entity.po.SysRolePO;
+import com.healthy.vision.entity.po.SysRolePOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface WxPublicPOMapper {
+public interface SysRolePOMapper {
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  long countByExample(WxPublicPOExample example);
+  long countByExample(SysRolePOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int deleteByExample(WxPublicPOExample example);
+  int deleteByExample(SysRolePOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int deleteByPrimaryKey(Long wxPublicId);
+  int deleteByPrimaryKey(Integer sysRoleId);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int insert(WxPublicPO record);
+  int insert(SysRolePO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int insertSelective(WxPublicPO record);
+  int insertSelective(SysRolePO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  List<WxPublicPO> selectByExample(WxPublicPOExample example);
+  List<SysRolePO> selectByExample(SysRolePOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  WxPublicPO selectByPrimaryKey(Long wxPublicId);
+  SysRolePO selectByPrimaryKey(Integer sysRoleId);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByExampleSelective(@Param("record") WxPublicPO record, @Param("example") WxPublicPOExample example);
+  int updateByExampleSelective(@Param("record") SysRolePO record, @Param("example") SysRolePOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByExample(@Param("record") WxPublicPO record, @Param("example") WxPublicPOExample example);
+  int updateByExample(@Param("record") SysRolePO record, @Param("example") SysRolePOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByPrimaryKeySelective(WxPublicPO record);
+  int updateByPrimaryKeySelective(SysRolePO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByPrimaryKey(WxPublicPO record);
+  int updateByPrimaryKey(SysRolePO record);
 }

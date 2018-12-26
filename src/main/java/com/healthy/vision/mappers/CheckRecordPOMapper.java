@@ -1,75 +1,75 @@
 package com.healthy.vision.mappers;
 
-import com.healthy.vision.entity.po.WxPublicPO;
-import com.healthy.vision.entity.po.WxPublicPOExample;
+import com.healthy.vision.entity.po.CheckRecordPO;
+import com.healthy.vision.entity.po.CheckRecordPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface WxPublicPOMapper {
+public interface CheckRecordPOMapper {
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  long countByExample(WxPublicPOExample example);
+  long countByExample(CheckRecordPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int deleteByExample(WxPublicPOExample example);
+  int deleteByExample(CheckRecordPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int deleteByPrimaryKey(Long wxPublicId);
+  int deleteByPrimaryKey(Integer checkRecordId);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int insert(WxPublicPO record);
+  int insert(CheckRecordPO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int insertSelective(WxPublicPO record);
+  int insertSelective(CheckRecordPO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  List<WxPublicPO> selectByExample(WxPublicPOExample example);
+  List<CheckRecordPO> selectByExample(CheckRecordPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  WxPublicPO selectByPrimaryKey(Long wxPublicId);
+  CheckRecordPO selectByPrimaryKey(Integer checkRecordId);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByExampleSelective(@Param("record") WxPublicPO record, @Param("example") WxPublicPOExample example);
+  int updateByExampleSelective(@Param("record") CheckRecordPO record, @Param("example") CheckRecordPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByExample(@Param("record") WxPublicPO record, @Param("example") WxPublicPOExample example);
+  int updateByExample(@Param("record") CheckRecordPO record, @Param("example") CheckRecordPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByPrimaryKeySelective(WxPublicPO record);
+  int updateByPrimaryKeySelective(CheckRecordPO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByPrimaryKey(WxPublicPO record);
+  int updateByPrimaryKey(CheckRecordPO record);
 }

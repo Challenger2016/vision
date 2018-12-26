@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.healthy.vision.mappers.DevicePOMapper">
+  <cache type="com.healthy.vision.common.redis.RedisCache" />
+  <resultMap id="BaseResultMap" type="com.healthy.vision.entity.po.DevicePO">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    <id column="device_id" jdbcType="INTEGER" property="deviceId" />
+    <result column="device_code" jdbcType="VARCHAR" property="deviceCode" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="device_type" jdbcType="VARCHAR" property="deviceType" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
+    <result column="create_create" jdbcType="TIMESTAMP" property="createCreate" />
+    <result column="modified_user_id" jdbcType="INTEGER" property="modifiedUserId" />
+    <result column="modified_user_name" jdbcType="VARCHAR" property="modifiedUserName" />
+    <result column="modified_date" jdbcType="TIMESTAMP" property="modifiedDate" />
+    <result column="valid" jdbcType="BIT" property="valid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    device_id, device_code, device_name, device_type, address, remark, create_user_id, 
+    create_user_name, create_create, modified_user_id, modified_user_name, modified_date, 
+    valid
+  </sql>
+  <select id="selectByExample" parameterType="com.healthy.vision.entity.po.DevicePOExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_device
+    where device_id = #{deviceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    delete from t_device
+    where device_id = #{deviceId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.healthy.vision.entity.po.DevicePOExample">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    delete from t_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.healthy.vision.entity.po.DevicePO">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    <selectKey keyProperty="deviceId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_device (device_code, device_name, device_type, 
+      address, remark, create_user_id, 
+      create_user_name, create_create, modified_user_id, 
+      modified_user_name, modified_date, valid
+      )
+    values (#{deviceCode,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, #{deviceType,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, 
+      #{createUserName,jdbcType=VARCHAR}, #{createCreate,jdbcType=TIMESTAMP}, #{modifiedUserId,jdbcType=INTEGER}, 
+      #{modifiedUserName,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, #{valid,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.healthy.vision.entity.po.DevicePO">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    <selectKey keyProperty="deviceId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceCode != null">
+        device_code,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="deviceType != null">
+        device_type,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createUserName != null">
+        create_user_name,
+      </if>
+      <if test="createCreate != null">
+        create_create,
+      </if>
+      <if test="modifiedUserId != null">
+        modified_user_id,
+      </if>
+      <if test="modifiedUserName != null">
+        modified_user_name,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceCode != null">
+        #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createUserName != null">
+        #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createCreate != null">
+        #{createCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedUserId != null">
+        #{modifiedUserId,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedUserName != null">
+        #{modifiedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.healthy.vision.entity.po.DevicePOExample" resultType="java.lang.Long">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    select count(*) from t_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    update t_device
+    <set>
+      <if test="record.deviceId != null">
+        device_id = #{record.deviceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deviceCode != null">
+        device_code = #{record.deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceName != null">
+        device_name = #{record.deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceType != null">
+        device_type = #{record.deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUserId != null">
+        create_user_id = #{record.createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createUserName != null">
+        create_user_name = #{record.createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createCreate != null">
+        create_create = #{record.createCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifiedUserId != null">
+        modified_user_id = #{record.modifiedUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.modifiedUserName != null">
+        modified_user_name = #{record.modifiedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifiedDate != null">
+        modified_date = #{record.modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.valid != null">
+        valid = #{record.valid,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    update t_device
+    set device_id = #{record.deviceId,jdbcType=INTEGER},
+      device_code = #{record.deviceCode,jdbcType=VARCHAR},
+      device_name = #{record.deviceName,jdbcType=VARCHAR},
+      device_type = #{record.deviceType,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_user_id = #{record.createUserId,jdbcType=INTEGER},
+      create_user_name = #{record.createUserName,jdbcType=VARCHAR},
+      create_create = #{record.createCreate,jdbcType=TIMESTAMP},
+      modified_user_id = #{record.modifiedUserId,jdbcType=INTEGER},
+      modified_user_name = #{record.modifiedUserName,jdbcType=VARCHAR},
+      modified_date = #{record.modifiedDate,jdbcType=TIMESTAMP},
+      valid = #{record.valid,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.healthy.vision.entity.po.DevicePO">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    update t_device
+    <set>
+      <if test="deviceCode != null">
+        device_code = #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        device_type = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createUserName != null">
+        create_user_name = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="createCreate != null">
+        create_create = #{createCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedUserId != null">
+        modified_user_id = #{modifiedUserId,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedUserName != null">
+        modified_user_name = #{modifiedUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=BIT},
+      </if>
+    </set>
+    where device_id = #{deviceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.healthy.vision.entity.po.DevicePO">
+    <!--
+      WARNING - 只读 - @mbg.generated
+      This element was generated on 2018-12-26 10:46:20.
+    -->
+    update t_device
+    set device_code = #{deviceCode,jdbcType=VARCHAR},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      create_user_name = #{createUserName,jdbcType=VARCHAR},
+      create_create = #{createCreate,jdbcType=TIMESTAMP},
+      modified_user_id = #{modifiedUserId,jdbcType=INTEGER},
+      modified_user_name = #{modifiedUserName,jdbcType=VARCHAR},
+      modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
+      valid = #{valid,jdbcType=BIT}
+    where device_id = #{deviceId,jdbcType=INTEGER}
+  </update>
+  <cache type="com.healthy.vision.common.redis.RedisCache" />
+  <cache type="com.healthy.vision.common.redis.RedisCache" />
+  <cache type="com.healthy.vision.common.redis.RedisCache" />
+</mapper>

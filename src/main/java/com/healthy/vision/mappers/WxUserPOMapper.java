@@ -1,75 +1,75 @@
 package com.healthy.vision.mappers;
 
-import com.healthy.vision.entity.po.WxPublicPO;
-import com.healthy.vision.entity.po.WxPublicPOExample;
+import com.healthy.vision.entity.po.WxUserPO;
+import com.healthy.vision.entity.po.WxUserPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface WxPublicPOMapper {
+public interface WxUserPOMapper {
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  long countByExample(WxPublicPOExample example);
+  long countByExample(WxUserPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int deleteByExample(WxPublicPOExample example);
+  int deleteByExample(WxUserPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int deleteByPrimaryKey(Long wxPublicId);
+  int deleteByPrimaryKey(Integer wxUserId);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int insert(WxPublicPO record);
+  int insert(WxUserPO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int insertSelective(WxPublicPO record);
+  int insertSelective(WxUserPO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  List<WxPublicPO> selectByExample(WxPublicPOExample example);
+  List<WxUserPO> selectByExample(WxUserPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  WxPublicPO selectByPrimaryKey(Long wxPublicId);
+  WxUserPO selectByPrimaryKey(Integer wxUserId);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByExampleSelective(@Param("record") WxPublicPO record, @Param("example") WxPublicPOExample example);
+  int updateByExampleSelective(@Param("record") WxUserPO record, @Param("example") WxUserPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByExample(@Param("record") WxPublicPO record, @Param("example") WxPublicPOExample example);
+  int updateByExample(@Param("record") WxUserPO record, @Param("example") WxUserPOExample example);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByPrimaryKeySelective(WxPublicPO record);
+  int updateByPrimaryKeySelective(WxUserPO record);
 
   /**
    * 只读. 
    * @mbg.generated  2018-12-26 10:46:20
    */
-  int updateByPrimaryKey(WxPublicPO record);
+  int updateByPrimaryKey(WxUserPO record);
 }

@@ -22,9 +22,9 @@
 		
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://bizvane-2018.mysql.polardb.rds.aliyuncs.com:3306/bizvane-test" 
-			userId="bizvane_2018"
-			password="SF_bizvane20180613">
+			connectionURL="jdbc:mysql://127.0.0.1:3306/vision" 
+			userId="root"
+			password="root">
 		</jdbcConnection>
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
 			NUMERIC 类型解析为java.math.BigDecimal -->
@@ -54,6 +54,32 @@
 		<table tableName="t_wx_public" domainObjectName="WxPublicPO">
         	<generatedKey column="wx_public_id" sqlStatement="MySql" identity="true"/>
         </table>
-
+		<table tableName="t_wx_user" domainObjectName="WxUserPO">
+        	<generatedKey column="wx_user_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_check_record" domainObjectName="CheckRecordPO">
+        	<generatedKey column="check_record_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_device" domainObjectName="DevicePO">
+        	<generatedKey column="device_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_sys_dictionary" domainObjectName="SysDictionaryPO">
+        	<generatedKey column="sys_dictionary_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_sys_menu" domainObjectName="SysMenuPO">
+        	<generatedKey column="sys_menu_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_sys_role" domainObjectName="SysRolePO">
+        	<generatedKey column="sys_role_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_sys_role_menu_rel" domainObjectName="SysRoleMenuRelPO">
+        	<generatedKey column="sys_role_menu_rel_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_sys_user" domainObjectName="SysUserPO">
+        	<generatedKey column="sys_user_id" sqlStatement="MySql" identity="true"/>
+        </table>
+		<table tableName="t_sys_user_role_rel" domainObjectName="SysUserRoleRelPO">
+        	<generatedKey column="sys_user_role_rel_id" sqlStatement="MySql" identity="true"/>
+        </table>
 </context>
 </generatorConfiguration>
