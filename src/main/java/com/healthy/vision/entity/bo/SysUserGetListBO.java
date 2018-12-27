@@ -5,8 +5,8 @@ public class SysUserGetListBO {
   @io.swagger.annotations.ApiModelProperty(value = "用户code", name = "sysUserCode", required = false, example = "")
   private String sysUserCode;
 
-  @io.swagger.annotations.ApiModelProperty(value = "手机号", name = "phoneNumber", required = false, example = "")
-  private String phoneNumber;
+  @io.swagger.annotations.ApiModelProperty(value = "手机号", name = "phone", required = false, example = "")
+  private String phone;
 
   @io.swagger.annotations.ApiModelProperty(value = "姓名", name = "name", required = false, example = "")
   private String name;
@@ -23,12 +23,14 @@ public class SysUserGetListBO {
     this.sysUserCode = sysUserCode;
   }
 
-  public String getPhoneNumber() {
-    return phoneNumber;
+
+
+  public String getPhone() {
+    return phone;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setPhone(String phone) {
+    this.phone = phone;
   }
 
   public String getName() {

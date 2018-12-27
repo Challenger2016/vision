@@ -8,6 +8,12 @@ public class CheckRecordGetListBO {
   @io.swagger.annotations.ApiModelProperty(value = "身份证号", name = "idNember", required = false, example = "")
   private String idNember;
   
+  @io.swagger.annotations.ApiModelProperty(value = "检测日期区间起始", name = "checkDateStart", required = false, example = "")
+  private String checkDateStart;
+  
+  @io.swagger.annotations.ApiModelProperty(value = "检测日期区间闭合", name = "checkDateEnd", required = false, example = "")
+  private String checkDateEnd;
+  
   private int pageNum;
   
   private int pageSize;
@@ -42,6 +48,22 @@ public class CheckRecordGetListBO {
 
   public void setPageSize(int pageSize) {
     this.pageSize = pageSize;
+  }
+
+  public String getCheckDateStart() {
+    return checkDateStart;
+  }
+
+  public void setCheckDateStart(String checkDateStart) {
+    this.checkDateStart = checkDateStart;
+  }
+
+  public String getCheckDateEnd() {
+    return checkDateEnd;
+  }
+
+  public void setCheckDateEnd(String checkDateEnd) {
+    this.checkDateEnd = checkDateEnd;
   }
   
   

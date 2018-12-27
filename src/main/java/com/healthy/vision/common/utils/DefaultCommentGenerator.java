@@ -113,7 +113,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
    */
   @Override
   public void addRootComment(XmlElement rootElement) {
-    rootElement.addElement(new TextElement("<cache type=\"com.healthy.vision.common.redis.RedisCache\"/>"));
+
   }
 
   /*

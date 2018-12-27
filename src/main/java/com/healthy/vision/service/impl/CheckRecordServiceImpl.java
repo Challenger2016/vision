@@ -1,54 +1,60 @@
 package com.healthy.vision.service.impl;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.healthy.vision.entity.bo.CheckRecordGetListBO;
 import com.healthy.vision.entity.po.CheckRecordPO;
-import com.healthy.vision.entity.po.CheckRecordPOExample;
-import com.healthy.vision.entity.po.CheckRecordPOExample.Criteria;
+import com.healthy.vision.entity.vo.CheckRecordGetListVO;
 import com.healthy.vision.entity.vo.ResponseData;
 import com.healthy.vision.mappers.CheckRecordPOMapper;
 import com.healthy.vision.service.CheckRecordService;
 
+@Service
 public class CheckRecordServiceImpl implements CheckRecordService {
 
   @Autowired
   private CheckRecordPOMapper checkRecordPOMapper;
   
   @Override
-  public ResponseData<PageInfo<CheckRecordPO>> getList(CheckRecordGetListBO bo) {
-
-    String name = bo.getName();
-    String idNember = bo.getIdNember();
-
-    CheckRecordPOExample example = new CheckRecordPOExample();
-    Criteria createCriteria = example.createCriteria();
-    if (StringUtils.isNotBlank(name)) {
-      //createCriteria.and
-    }
+  public ResponseData<PageInfo<CheckRecordGetListVO>> getList(CheckRecordGetListBO bo) {
     
-    checkRecordPOMapper.selectByExample(example);
-    return null;
+    PageHelper.offsetPage(bo.getPageNum(), bo.getPageSize());
+    
+    List<CheckRecordGetListVO> list = checkRecordPOMapper.selectByCondition(bo);
+    
+    ResponseData<PageInfo<CheckRecordGetListVO>> responseData  = new ResponseData<>();
+    responseData.setData(new PageInfo<>(list));
+    
+    return responseData;
   }
 
   @Override
   public ResponseData<CheckRecordPO> find(Integer checkRecordId) {
-    // TODO Auto-generated method stub
-    return null;
+
+    CheckRecordPO checkRecordPO = checkRecordPOMapper.selectByPrimaryKey(checkRecordId);
+    
+    ResponseData<CheckRecordPO> responseData = new ResponseData<CheckRecordPO>();
+    responseData.setData(checkRecordPO);
+    return responseData;
   }
 
   @Override
   public ResponseData<Object> update(CheckRecordPO po) {
-    // TODO Auto-generated method stub
-    return null;
+
+    checkRecordPOMapper.updateByPrimaryKeySelective(po);
+    return new ResponseData<>();
   }
 
   @Override
   public ResponseData<Object> delete(Integer checkRecordId) {
-    // TODO Auto-generated method stub
-    return null;
+    
+    checkRecordPOMapper.deleteByPrimaryKey(checkRecordId);
+    return new ResponseData<>();
   }
 
   

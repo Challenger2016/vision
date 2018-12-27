@@ -42,11 +42,32 @@ public interface SysRoleService {
   ResponseData<SysRolePO> find(Integer sysRoleId);
   
   /**
+   * 通过用户id查询角色列表
+   * @param sysRoleId
+   * @return
+   */
+  ResponseData<List<SysRolePO>> getListByUserId(Integer sysUserId);
+  
+  /**
    * 查询角色权限
    * @param sysRoleId
    * @return
    */
   ResponseData<List<SysMenuVO>> findMenus(Integer sysRoleId);
+  
+  /**
+   * 查询角色权限
+   * @param sysRoleId
+   * @return
+   */
+  ResponseData<List<SysMenuVO>> findMenus(List<Integer> sysRoleIdList);
+  
+  /**
+   * 查询角色权限
+   * @param sysRoleId
+   * @return
+   */
+  ResponseData<List<SysMenuVO>> findMenusByUserId(Integer sysUserId);
   
   /**
    * 更新角色

@@ -51,8 +51,8 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
         
-		<table tableName="t_sys_user" domainObjectName="SysUserPO">
-        	<generatedKey column="sys_user_id" sqlStatement="MySql" identity="true"/>
+		<table tableName="t_sys_user_role_rel" domainObjectName="SysUserRoleRelPO">
+        	<generatedKey column="sys_user_role_rel_id" sqlStatement="MySql" identity="true"/>
         </table>
 
 </context>

@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
 import com.healthy.vision.common.enums.SysResponseEnum;
-import com.healthy.vision.common.redis.RedisClient;
 import com.healthy.vision.entity.bo.SysUserAddBO;
 import com.healthy.vision.entity.bo.SysUserGetListBO;
 import com.healthy.vision.entity.bo.SysUserLoginBO;
+import com.healthy.vision.entity.bo.SysUserUpdateBO;
 import com.healthy.vision.entity.po.SysUserPO;
 import com.healthy.vision.entity.vo.ResponseData;
+import com.healthy.vision.entity.vo.SysUserVO;
 import com.healthy.vision.service.SysUserService;
 
 import io.swagger.annotations.Api;
@@ -29,20 +30,14 @@ public class SysUserController {
 
   @Autowired
   private SysUserService sysUserService;
-  
-  @Autowired
-  private RedisClient redisClient;
-
 
   @ApiOperation(value = "后台登录")
   @RequestMapping(value = "/login", method = RequestMethod.POST)
   public ResponseData<SysUserPO> login(@RequestBody @Valid SysUserLoginBO bo, HttpServletRequest request) {
     ResponseData<SysUserPO> responseData = this.sysUserService.login(bo);
     if (SysResponseEnum.SUCCESS.getCode() == responseData.getCode()) {
-      String sessionId = request.getSession().getId();
-      redisClient.set("sessionid_" + sessionId, responseData.getData(), 3600L);
+      HttpUtils.login(request, responseData.getData());
     }
-
     
     return responseData;
   }
@@ -50,28 +45,30 @@ public class SysUserController {
   @ApiOperation(value = "退出")
   @RequestMapping(value = "/logout", method = RequestMethod.POST)
   public void logout(HttpServletRequest request) {
-    String sessionId = request.getSession().getId();
-    
-    redisClient.remove("sessionid_" + sessionId);
+    HttpUtils.logout(request);
   }
 
   @ApiOperation(value = "添加用户")
   @RequestMapping(value = "/add", method = RequestMethod.POST)
-  public ResponseData<Object> add(@RequestBody SysUserAddBO bo) {
-    return this.sysUserService.add(bo);
+  public ResponseData<Object> add(@RequestBody SysUserAddBO bo, HttpServletRequest request) {
+    
+    SysUserPO loginSysUserPO = HttpUtils.getLoginSysUserPO(request);
+    return this.sysUserService.add(bo, loginSysUserPO);
 
   }
 
   @ApiOperation(value = "删除")
   @RequestMapping(value = "/delete", method = RequestMethod.POST)
-  public ResponseData<Object> delete(Integer sysUserId) {
-    return this.sysUserService.delete(sysUserId);
+  public ResponseData<Object> delete(Integer sysUserId, HttpServletRequest request) {
+    SysUserPO loginSysUserPO = HttpUtils.getLoginSysUserPO(request);
+    return this.sysUserService.delete(sysUserId, loginSysUserPO);
 
   }
 
   @ApiOperation(value = "查找用户")
   @RequestMapping(value = "/findById", method = RequestMethod.POST)
-  public ResponseData<SysUserPO> findById(Integer sysUserId) {
+  public ResponseData<SysUserVO> findById(Integer sysUserId) {
+
     return this.sysUserService.findById(sysUserId);
 
   }
@@ -86,8 +83,9 @@ public class SysUserController {
 
   @ApiOperation(value = "修改用户")
   @RequestMapping(value = "/update", method = RequestMethod.POST)
-  public ResponseData<Object> update(@RequestBody SysUserAddBO bo) {
-    return this.sysUserService.update(bo);
+  public ResponseData<Object> update(@RequestBody SysUserUpdateBO bo, HttpServletRequest request) {
+    SysUserPO loginSysUserPO = HttpUtils.getLoginSysUserPO(request);
+    return this.sysUserService.update(bo, loginSysUserPO);
 
   }
 

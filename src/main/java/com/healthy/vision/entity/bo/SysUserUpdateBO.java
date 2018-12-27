@@ -5,8 +5,12 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class SysUserAddBO {
+public class SysUserUpdateBO {
 
+  @io.swagger.annotations.ApiModelProperty(value = "用户id", name = "sysUserId", required = false, example = "")
+  @NotNull
+  private Integer sysUserId;
+  
   @io.swagger.annotations.ApiModelProperty(value = "姓名", name = "name", required = false, example = "")
   @NotBlank
   private String name;
@@ -75,6 +79,14 @@ public class SysUserAddBO {
 
   public void setRemark(String remark) {
     this.remark = remark;
+  }
+
+  public Integer getSysUserId() {
+    return sysUserId;
+  }
+
+  public void setSysUserId(Integer sysUserId) {
+    this.sysUserId = sysUserId;
   }
   
   

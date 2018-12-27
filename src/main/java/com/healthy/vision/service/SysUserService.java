@@ -4,8 +4,10 @@ import com.github.pagehelper.PageInfo;
 import com.healthy.vision.entity.bo.SysUserAddBO;
 import com.healthy.vision.entity.bo.SysUserGetListBO;
 import com.healthy.vision.entity.bo.SysUserLoginBO;
+import com.healthy.vision.entity.bo.SysUserUpdateBO;
 import com.healthy.vision.entity.po.SysUserPO;
 import com.healthy.vision.entity.vo.ResponseData;
+import com.healthy.vision.entity.vo.SysUserVO;
 
 /**
  * 用户账号管理
@@ -27,7 +29,7 @@ public interface SysUserService {
    * @param bo
    * @return
    */
-  ResponseData<Object> add(SysUserAddBO bo);
+  ResponseData<Object> add(SysUserAddBO bo, SysUserPO sysUserPO);
   
   /**
    * 分页查询用户数据
@@ -41,19 +43,19 @@ public interface SysUserService {
    * @param sysUserId
    * @return
    */
-  ResponseData<SysUserPO> findById(Integer sysUserId);
+  ResponseData<SysUserVO> findById(Integer sysUserId);
   
   /**
    * 更新用户数据
    * @param po
    * @return
    */
-  ResponseData<Object> update(SysUserAddBO po);
+  ResponseData<Object> update(SysUserUpdateBO bo, SysUserPO sysUserPO);
   
   /**
    * 删除用户数据
    * @return
    */
-  ResponseData<Object> delete(Integer sysUserId);
+  ResponseData<Object> delete(Integer sysUserId, SysUserPO sysUserPO);
 
 }

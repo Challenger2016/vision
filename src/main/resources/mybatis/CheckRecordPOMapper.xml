@@ -647,19 +647,33 @@
     where check_record_id = #{checkRecordId,jdbcType=INTEGER}
   </update>
 
-<select id="selectByUser" parameterType="com.healthy.vision.entity.po.WxUserPO" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
+<select id="selectByCondition" parameterType="com.healthy.vision.entity.bo.CheckRecordGetListBO" resultType="com.healthy.vision.entity.vo.CheckRecordGetListVO">
+	SELECT
+		u.`name`,
+		u.id_nember,
+		u.age,
+		r.check_record_id,
+		r.check_date,
+		r.data_type,
+		r.eye_type
+	FROM
+		t_wx_user u
+	JOIN t_check_record r ON u.wx_user_id = r.wx_user_id
+	WHERE
+		1 = 1
+    <if test="name != null and name != ''">
+      and u.name like concat('%',#{name,jdbcType=VARCHAR},'%')
+    </if>		
+    <if test="idNember != null and idNember != ''">
+      and u.id_nember = #{idNember,jdbcType=VARCHAR}
+    </if>		
+    <if test="checkDateStart != null and checkDateStart != '' ">
+      AND r.check_date &gt;= CONCAT(#{checkDateStart}," 00:00:00")
     </if>
-    <include refid="Base_Column_List" />
-    from t_check_record
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
+    <if test="checkDateEnd != null and checkDateEnd != '' ">
+      AND r.check_date &lt;= CONCAT(#{checkDateEnd}," 23:59:59")
     </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+    order by create_create desc
   </select>
   
 

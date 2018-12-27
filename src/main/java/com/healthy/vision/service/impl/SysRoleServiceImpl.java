@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.page.PageMethod;
@@ -18,13 +20,17 @@ import com.healthy.vision.entity.po.SysRoleMenuRelPOExample;
 import com.healthy.vision.entity.po.SysRolePO;
 import com.healthy.vision.entity.po.SysRolePOExample;
 import com.healthy.vision.entity.po.SysUserPO;
+import com.healthy.vision.entity.po.SysUserRoleRelPO;
+import com.healthy.vision.entity.po.SysUserRoleRelPOExample;
 import com.healthy.vision.entity.vo.ResponseData;
 import com.healthy.vision.entity.vo.SysMenuVO;
 import com.healthy.vision.mappers.SysMenuPOMapper;
 import com.healthy.vision.mappers.SysRoleMenuRelPOMapper;
 import com.healthy.vision.mappers.SysRolePOMapper;
+import com.healthy.vision.mappers.SysUserRoleRelPOMapper;
 import com.healthy.vision.service.SysRoleService;
 
+@Service
 public class SysRoleServiceImpl implements SysRoleService {
 
   @Autowired
@@ -35,6 +41,9 @@ public class SysRoleServiceImpl implements SysRoleService {
 
   @Autowired
   private SysMenuPOMapper sysMenuPOMapper;
+  
+  @Autowired
+  private SysUserRoleRelPOMapper sysUserRoleRelPOMapper;
 
   @Override
   public ResponseData<Object> add(SysRoleAddBO bo, SysUserPO sysUserPO) {
@@ -91,8 +100,10 @@ public class SysRoleServiceImpl implements SysRoleService {
   @Override
   public ResponseData<List<SysMenuVO>> findMenus(Integer sysRoleId) {
 
-
-    List<SysMenuPO> list = this.sysMenuPOMapper.selectBySysRoleId(sysRoleId);
+    List<Integer> paramList = new ArrayList<>();
+    paramList.add(sysRoleId);
+    
+    List<SysMenuPO> list = this.sysMenuPOMapper.selectBySysRoleId(paramList);
     List<SysMenuVO> sysMenuVOList = this.getSysMenuVOList(list);
     List<SysMenuVO> treeList = this.initTreeMenu(sysMenuVOList, 0);
 
@@ -117,23 +128,23 @@ public class SysRoleServiceImpl implements SysRoleService {
     sysRolePO.setModifiedDate(nowDate);
     this.sysRolePOMapper.updateByPrimaryKeySelective(sysRolePO);
 
-    SysRoleMenuRelPOExample exampleDelete = new SysRoleMenuRelPOExample();
-    exampleDelete.createCriteria().andSysRoleIdEqualTo(sysRoleId);
-    this.sysRoleMenuRelPOMapper.deleteByExample(exampleDelete);
-
     List<Integer> sysMenuIdList = bo.getSysMenuIdList();
-    for (Integer sysMenuId : sysMenuIdList) {
+    if (CollectionUtils.isNotEmpty(sysMenuIdList)) {
+      SysRoleMenuRelPOExample exampleDelete = new SysRoleMenuRelPOExample();
+      exampleDelete.createCriteria().andSysRoleIdEqualTo(sysRoleId);
+      this.sysRoleMenuRelPOMapper.deleteByExample(exampleDelete);
+      
+      for (Integer sysMenuId : sysMenuIdList) {
+        SysRoleMenuRelPO po = new SysRoleMenuRelPO();
+        po.setSysRoleId(sysRoleId);
+        po.setSysMenuId(sysMenuId);
+        po.setCreateUserId(sysUserId);
+        po.setCreateUserName(sysUserName);
+        po.setCreateDate(nowDate);
 
-      SysRoleMenuRelPO po = new SysRoleMenuRelPO();
-      po.setSysRoleId(sysRoleId);
-      po.setSysMenuId(sysMenuId);
-      po.setCreateUserId(sysUserId);
-      po.setCreateUserName(sysUserName);
-      po.setCreateDate(nowDate);
-
-      this.sysRoleMenuRelPOMapper.insertSelective(po);
+        this.sysRoleMenuRelPOMapper.insertSelective(po);
+      }
     }
-
 
     return new ResponseData<>();
   }
@@ -191,6 +202,61 @@ public class SysRoleServiceImpl implements SysRoleService {
     SysRolePO sysRolePO = this.sysRolePOMapper.selectByPrimaryKey(sysRoleId);
 
     responseData.setData(sysRolePO);
+    return responseData;
+  }
+
+  @Override
+  public ResponseData<List<SysRolePO>> getListByUserId(Integer sysUserId) {
+    ResponseData<List<SysRolePO>> responseData = new ResponseData<>();
+    
+    SysUserRoleRelPOExample relPOExample = new SysUserRoleRelPOExample();
+    relPOExample.createCriteria().andSysUserIdEqualTo(sysUserId);
+    List<SysUserRoleRelPO> relPOList = sysUserRoleRelPOMapper.selectByExample(relPOExample);
+    
+    if (CollectionUtils.isEmpty(relPOList)) {
+      return responseData;
+    }
+    
+    List<Integer> sysRoleIdList = new ArrayList<>();
+    for (SysUserRoleRelPO po : relPOList) {
+      sysRoleIdList.add(po.getSysRoleId());
+    }
+    
+    SysRolePOExample example = new SysRolePOExample();
+    example.createCriteria().andSysRoleIdIn(sysRoleIdList);
+    
+    List<SysRolePO> list = sysRolePOMapper.selectByExample(example);
+    responseData.setData(list);
+    
+    return responseData;
+  }
+
+  @Override
+  public ResponseData<List<SysMenuVO>> findMenusByUserId(Integer sysUserId) {
+    ResponseData<List<SysMenuVO>> responseData = new ResponseData<>();
+    
+    List<SysRolePO> sysRolePOList = getListByUserId(sysUserId).getData();
+    if (CollectionUtils.isEmpty(sysRolePOList)) {
+      return responseData;
+    }
+    
+    List<Integer> sysRoleIdList = new ArrayList<>();
+    for (Integer item : sysRoleIdList) {
+      sysRoleIdList.add(item);
+    }
+    
+    return findMenus(sysRoleIdList);
+  }
+
+  @Override
+  public ResponseData<List<SysMenuVO>> findMenus(List<Integer> sysRoleIdList) {
+    
+    List<SysMenuPO> list = this.sysMenuPOMapper.selectBySysRoleId(sysRoleIdList);
+    List<SysMenuVO> sysMenuVOList = this.getSysMenuVOList(list);
+    List<SysMenuVO> treeList = this.initTreeMenu(sysMenuVOList, 0);
+
+    ResponseData<List<SysMenuVO>> responseData = new ResponseData<>();
+    responseData.setData(treeList);
     return responseData;
   }
 

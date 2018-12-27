@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageInfo;
 import com.healthy.vision.entity.bo.CheckRecordGetListBO;
 import com.healthy.vision.entity.po.CheckRecordPO;
+import com.healthy.vision.entity.vo.CheckRecordGetListVO;
 import com.healthy.vision.entity.vo.ResponseData;
 import com.healthy.vision.service.CheckRecordService;
 
@@ -40,7 +41,7 @@ public class CheckRecordController {
 
   @ApiOperation(value = "分页查询检测记录列表")
   @RequestMapping(value = "/getList", method = RequestMethod.POST)
-  public ResponseData<PageInfo<CheckRecordPO>> getList(@RequestBody CheckRecordGetListBO bo) {
+  public ResponseData<PageInfo<CheckRecordGetListVO>> getList(@RequestBody CheckRecordGetListBO bo) {
     return this.checkRecordService.getList(bo);
 
   }

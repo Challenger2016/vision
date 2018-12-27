@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.healthy.vision.mappers.SysMenuPOMapper">
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
-  <resultMap id="BaseResultMap" type="com.healthy.vision.entity.po.SysMenuPO">
+<mapper namespace="com.healthy.vision.mappers.SysUserRoleRelPOMapper">
+  <resultMap id="BaseResultMap" type="com.healthy.vision.entity.po.SysUserRoleRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    <id column="sys_menu_id" jdbcType="INTEGER" property="sysMenuId" />
-    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
-    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
-    <result column="pre_menu_id" jdbcType="INTEGER" property="preMenuId" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
-    <result column="icon" jdbcType="VARCHAR" property="icon" />
-    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <id column="sys_user_role_rel_id" jdbcType="INTEGER" property="sysUserRoleRelId" />
+    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
+    <result column="sys_role_id" jdbcType="INTEGER" property="sysRoleId" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
     <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
@@ -26,7 +21,7 @@
   <sql id="Example_Where_Clause">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -59,7 +54,7 @@
   <sql id="Update_By_Example_Where_Clause">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
     <where>
       <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -92,23 +87,22 @@
   <sql id="Base_Column_List">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    sys_menu_id, menu_code, menu_name, pre_menu_id, url, icon, sort, remark, create_user_id, 
-    create_user_name, create_date, modified_user_id, modified_user_name, modified_date, 
-    valid
+    sys_user_role_rel_id, sys_user_id, sys_role_id, remark, create_user_id, create_user_name, 
+    create_date, modified_user_id, modified_user_name, modified_date, valid
   </sql>
-  <select id="selectByExample" parameterType="com.healthy.vision.entity.po.SysMenuPOExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPOExample" resultMap="BaseResultMap">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_sys_menu
+    from t_sys_user_role_rel
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -119,77 +113,63 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
     select 
     <include refid="Base_Column_List" />
-    from t_sys_menu
-    where sys_menu_id = #{sysMenuId,jdbcType=INTEGER}
+    from t_sys_user_role_rel
+    where sys_user_role_rel_id = #{sysUserRoleRelId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    delete from t_sys_menu
-    where sys_menu_id = #{sysMenuId,jdbcType=INTEGER}
+    delete from t_sys_user_role_rel
+    where sys_user_role_rel_id = #{sysUserRoleRelId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.healthy.vision.entity.po.SysMenuPOExample">
+  <delete id="deleteByExample" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPOExample">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    delete from t_sys_menu
+    delete from t_sys_user_role_rel
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.healthy.vision.entity.po.SysMenuPO">
+  <insert id="insert" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    <selectKey keyProperty="sysMenuId" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="sysUserRoleRelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_sys_menu (menu_code, menu_name, pre_menu_id, 
-      url, icon, sort, remark, 
+    insert into t_sys_user_role_rel (sys_user_id, sys_role_id, remark, 
       create_user_id, create_user_name, create_date, 
       modified_user_id, modified_user_name, modified_date, 
       valid)
-    values (#{menuCode,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, #{preMenuId,jdbcType=INTEGER}, 
-      #{url,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+    values (#{sysUserId,jdbcType=INTEGER}, #{sysRoleId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
       #{createUserId,jdbcType=INTEGER}, #{createUserName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{modifiedUserId,jdbcType=INTEGER}, #{modifiedUserName,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, 
       #{valid,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.healthy.vision.entity.po.SysMenuPO">
+  <insert id="insertSelective" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    <selectKey keyProperty="sysMenuId" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="sysUserRoleRelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_sys_menu
+    insert into t_sys_user_role_rel
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="menuCode != null">
-        menu_code,
+      <if test="sysUserId != null">
+        sys_user_id,
       </if>
-      <if test="menuName != null">
-        menu_name,
-      </if>
-      <if test="preMenuId != null">
-        pre_menu_id,
-      </if>
-      <if test="url != null">
-        url,
-      </if>
-      <if test="icon != null">
-        icon,
-      </if>
-      <if test="sort != null">
-        sort,
+      <if test="sysRoleId != null">
+        sys_role_id,
       </if>
       <if test="remark != null">
         remark,
@@ -217,23 +197,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="menuCode != null">
-        #{menuCode,jdbcType=VARCHAR},
+      <if test="sysUserId != null">
+        #{sysUserId,jdbcType=INTEGER},
       </if>
-      <if test="menuName != null">
-        #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="preMenuId != null">
-        #{preMenuId,jdbcType=INTEGER},
-      </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="icon != null">
-        #{icon,jdbcType=VARCHAR},
-      </if>
-      <if test="sort != null">
-        #{sort,jdbcType=INTEGER},
+      <if test="sysRoleId != null">
+        #{sysRoleId,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
@@ -261,12 +229,12 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.healthy.vision.entity.po.SysMenuPOExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPOExample" resultType="java.lang.Long">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    select count(*) from t_sys_menu
+    select count(*) from t_sys_user_role_rel
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -274,30 +242,18 @@
   <update id="updateByExampleSelective" parameterType="map">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    update t_sys_menu
+    update t_sys_user_role_rel
     <set>
-      <if test="record.sysMenuId != null">
-        sys_menu_id = #{record.sysMenuId,jdbcType=INTEGER},
+      <if test="record.sysUserRoleRelId != null">
+        sys_user_role_rel_id = #{record.sysUserRoleRelId,jdbcType=INTEGER},
       </if>
-      <if test="record.menuCode != null">
-        menu_code = #{record.menuCode,jdbcType=VARCHAR},
+      <if test="record.sysUserId != null">
+        sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
       </if>
-      <if test="record.menuName != null">
-        menu_name = #{record.menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.preMenuId != null">
-        pre_menu_id = #{record.preMenuId,jdbcType=INTEGER},
-      </if>
-      <if test="record.url != null">
-        url = #{record.url,jdbcType=VARCHAR},
-      </if>
-      <if test="record.icon != null">
-        icon = #{record.icon,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sort != null">
-        sort = #{record.sort,jdbcType=INTEGER},
+      <if test="record.sysRoleId != null">
+        sys_role_id = #{record.sysRoleId,jdbcType=INTEGER},
       </if>
       <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
@@ -331,16 +287,12 @@
   <update id="updateByExample" parameterType="map">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    update t_sys_menu
-    set sys_menu_id = #{record.sysMenuId,jdbcType=INTEGER},
-      menu_code = #{record.menuCode,jdbcType=VARCHAR},
-      menu_name = #{record.menuName,jdbcType=VARCHAR},
-      pre_menu_id = #{record.preMenuId,jdbcType=INTEGER},
-      url = #{record.url,jdbcType=VARCHAR},
-      icon = #{record.icon,jdbcType=VARCHAR},
-      sort = #{record.sort,jdbcType=INTEGER},
+    update t_sys_user_role_rel
+    set sys_user_role_rel_id = #{record.sysUserRoleRelId,jdbcType=INTEGER},
+      sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
+      sys_role_id = #{record.sysRoleId,jdbcType=INTEGER},
       remark = #{record.remark,jdbcType=VARCHAR},
       create_user_id = #{record.createUserId,jdbcType=INTEGER},
       create_user_name = #{record.createUserName,jdbcType=VARCHAR},
@@ -353,30 +305,18 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.healthy.vision.entity.po.SysMenuPO">
+  <update id="updateByPrimaryKeySelective" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    update t_sys_menu
+    update t_sys_user_role_rel
     <set>
-      <if test="menuCode != null">
-        menu_code = #{menuCode,jdbcType=VARCHAR},
+      <if test="sysUserId != null">
+        sys_user_id = #{sysUserId,jdbcType=INTEGER},
       </if>
-      <if test="menuName != null">
-        menu_name = #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="preMenuId != null">
-        pre_menu_id = #{preMenuId,jdbcType=INTEGER},
-      </if>
-      <if test="url != null">
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="icon != null">
-        icon = #{icon,jdbcType=VARCHAR},
-      </if>
-      <if test="sort != null">
-        sort = #{sort,jdbcType=INTEGER},
+      <if test="sysRoleId != null">
+        sys_role_id = #{sysRoleId,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
@@ -403,20 +343,16 @@
         valid = #{valid,jdbcType=BIT},
       </if>
     </set>
-    where sys_menu_id = #{sysMenuId,jdbcType=INTEGER}
+    where sys_user_role_rel_id = #{sysUserRoleRelId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.healthy.vision.entity.po.SysMenuPO">
+  <update id="updateByPrimaryKey" parameterType="com.healthy.vision.entity.po.SysUserRoleRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 19:26:57.
     -->
-    update t_sys_menu
-    set menu_code = #{menuCode,jdbcType=VARCHAR},
-      menu_name = #{menuName,jdbcType=VARCHAR},
-      pre_menu_id = #{preMenuId,jdbcType=INTEGER},
-      url = #{url,jdbcType=VARCHAR},
-      icon = #{icon,jdbcType=VARCHAR},
-      sort = #{sort,jdbcType=INTEGER},
+    update t_sys_user_role_rel
+    set sys_user_id = #{sysUserId,jdbcType=INTEGER},
+      sys_role_id = #{sysRoleId,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
       create_user_id = #{createUserId,jdbcType=INTEGER},
       create_user_name = #{createUserName,jdbcType=VARCHAR},
@@ -425,30 +361,6 @@
       modified_user_name = #{modifiedUserName,jdbcType=VARCHAR},
       modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
       valid = #{valid,jdbcType=BIT}
-    where sys_menu_id = #{sysMenuId,jdbcType=INTEGER}
+    where sys_user_role_rel_id = #{sysUserRoleRelId,jdbcType=INTEGER}
   </update>
-
-<select id="selectBySysRoleId" parameterType="java.util.List" resultMap="BaseResultMap">
-	SELECT
-		m.sys_menu_id,
-		m.menu_code,
-		m.menu_name,
-		m.pre_menu_id,
-		m.url,
-		m.icon,
-		m.sort
-	FROM
-		t_sys_role_menu_rel r
-	JOIN t_sys_menu m ON r.sys_menu_id = m.sys_menu_id
-	WHERE
-		r.sys_role_id in
-	<foreach close=")" collection="sysRoleIdList" item="listItem" open="(" separator=",">
-		#{sysRoleId,jdbcType=INTEGER}
-	</foreach>	
-		 
-	AND r.valid = 1
-	AND m.valid = 1
-	ORDER BY
-		m.sort
-  </select>
 </mapper>

@@ -73,6 +73,6 @@ public interface SysMenuPOMapper {
    */
   int updateByPrimaryKey(SysMenuPO record);
   
-  List<SysMenuPO> selectBySysRoleId(@Param("sysRoleId") Integer sysRoleId);
+  List<SysMenuPO> selectBySysRoleId(@Param("sysRoleIdList") List<Integer> sysRoleIdList);
   
 }

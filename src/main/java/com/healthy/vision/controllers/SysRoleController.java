@@ -1,5 +1,7 @@
 package com.healthy.vision.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import com.healthy.vision.entity.bo.SysRoleUpdateBO;
 import com.healthy.vision.entity.po.SysRolePO;
 import com.healthy.vision.entity.po.SysUserPO;
 import com.healthy.vision.entity.vo.ResponseData;
+import com.healthy.vision.entity.vo.SysMenuVO;
 import com.healthy.vision.service.SysRoleService;
 
 import io.swagger.annotations.Api;
@@ -29,15 +32,11 @@ public class SysRoleController {
   @Autowired
   private SysRoleService sysRoleService;
 
-  @Autowired
-  private RedisClient redisClient;
-
   @ApiOperation(value = "新增角色")
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   public ResponseData<Object> add(@RequestBody SysRoleAddBO bo, HttpServletRequest request) {
-    String sessionId = request.getSession().getId();
     
-    SysUserPO sysUserPO = (SysUserPO) redisClient.get("sessionid_" + sessionId);
+    SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
     
     return this.sysRoleService.add(bo, sysUserPO);
 
@@ -48,8 +47,8 @@ public class SysRoleController {
   @ApiOperation(value = "删除角色")
   @RequestMapping(value = "/delete", method = RequestMethod.POST)
   public ResponseData<Object> delete(Integer sysRoleId, HttpServletRequest request) {
-    String sessionId = request.getSession().getId();
-    SysUserPO sysUserPO = (SysUserPO) redisClient.get("sessionid_" + sessionId);
+
+    SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
     return this.sysRoleService.delete(sysRoleId, sysUserPO);
 
   }
@@ -62,6 +61,16 @@ public class SysRoleController {
     return this.sysRoleService.find(sysRoleId);
 
   }
+  
+  @ApiOperation(value = "获取用户菜单权限")
+  @RequestMapping(value = "/findMenus", method = RequestMethod.POST)
+  public ResponseData<List<SysMenuVO>> findMenus(HttpServletRequest request) {
+    
+    SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
+    return this.sysRoleService.findMenusByUserId(sysUserPO.getSysUserId());
+
+  }
+  
 
 
   @ApiOperation(value = "查询角色列表")
@@ -75,8 +84,8 @@ public class SysRoleController {
   @ApiOperation(value = "更新角色")
   @RequestMapping(value = "/update", method = RequestMethod.POST)
   public ResponseData<Object> update(@RequestBody SysRoleUpdateBO bo, HttpServletRequest request) {
-    String sessionId = request.getSession().getId();
-    SysUserPO sysUserPO = (SysUserPO) redisClient.get("sessionid_" + sessionId);
+
+    SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
     return this.sysRoleService.update(bo, sysUserPO);
 
   }

@@ -1,8 +1,10 @@
 package com.healthy.vision.mappers;
 
+import com.healthy.vision.entity.bo.CheckRecordGetListBO;
 import com.healthy.vision.entity.po.CheckRecordPO;
 import com.healthy.vision.entity.po.CheckRecordPOExample;
 import com.healthy.vision.entity.po.WxUserPO;
+import com.healthy.vision.entity.vo.CheckRecordGetListVO;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -75,5 +77,5 @@ public interface CheckRecordPOMapper {
    */
   int updateByPrimaryKey(CheckRecordPO record);
   
-  List<CheckRecordPO> selectByUser(@Param("wxUserPO")WxUserPO wxUserPO);
+  List<CheckRecordGetListVO> selectByCondition(CheckRecordGetListBO bo);
 }

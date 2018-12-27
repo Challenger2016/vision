@@ -3,6 +3,7 @@ package com.healthy.vision.service;
 import com.github.pagehelper.PageInfo;
 import com.healthy.vision.entity.bo.CheckRecordGetListBO;
 import com.healthy.vision.entity.po.CheckRecordPO;
+import com.healthy.vision.entity.vo.CheckRecordGetListVO;
 import com.healthy.vision.entity.vo.ResponseData;
 /**
  * 检测记录管理
@@ -18,7 +19,7 @@ public interface CheckRecordService {
    * @param pageSize
    * @return
    */
-  ResponseData<PageInfo<CheckRecordPO>> getList(CheckRecordGetListBO bo);
+  ResponseData<PageInfo<CheckRecordGetListVO>> getList(CheckRecordGetListBO bo);
   
   /**
    * 查询检测记录明细
