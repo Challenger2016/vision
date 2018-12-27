@@ -1,10 +1,15 @@
 package com.healthy.vision.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.healthy.vision.entity.bo.SysRoleAddBO;
 import com.healthy.vision.entity.bo.SysRoleGetListBO;
+import com.healthy.vision.entity.bo.SysRoleUpdateBO;
 import com.healthy.vision.entity.po.SysRolePO;
+import com.healthy.vision.entity.po.SysUserPO;
 import com.healthy.vision.entity.vo.ResponseData;
+import com.healthy.vision.entity.vo.SysMenuVO;
 
 /**
  * 角色管理
@@ -18,7 +23,7 @@ public interface SysRoleService {
    * @param bo
    * @return
    */
-  ResponseData<Object> add(SysRoleAddBO bo);
+  ResponseData<Object> add(SysRoleAddBO bo, SysUserPO sysUserPO);
   
   /**
    * 查询角色列表
@@ -30,24 +35,31 @@ public interface SysRoleService {
   ResponseData<PageInfo<SysRolePO>> getList(SysRoleGetListBO bo);
   
   /**
-   * 查询角色
+   * 查询角色详情
    * @param sysRoleId
    * @return
    */
   ResponseData<SysRolePO> find(Integer sysRoleId);
   
   /**
+   * 查询角色权限
+   * @param sysRoleId
+   * @return
+   */
+  ResponseData<List<SysMenuVO>> findMenus(Integer sysRoleId);
+  
+  /**
    * 更新角色
    * @param bo
    * @return
    */
-  ResponseData<Object> update(SysRoleAddBO bo);
+  ResponseData<Object> update(SysRoleUpdateBO bo, SysUserPO sysUserPO);
   
   /**
    * 删除角色
    * @param sysRoleId
    * @return
    */
-  ResponseData<Object> delete(Long sysRoleId);
+  ResponseData<Object> delete(Integer sysRoleId, SysUserPO sysUserPO);
 
 }

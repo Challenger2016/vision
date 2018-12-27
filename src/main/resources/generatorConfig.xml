@@ -51,35 +51,9 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
         
-		<table tableName="t_wx_public" domainObjectName="WxPublicPO">
-        	<generatedKey column="wx_public_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_wx_user" domainObjectName="WxUserPO">
-        	<generatedKey column="wx_user_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_check_record" domainObjectName="CheckRecordPO">
-        	<generatedKey column="check_record_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_device" domainObjectName="DevicePO">
-        	<generatedKey column="device_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_sys_dictionary" domainObjectName="SysDictionaryPO">
-        	<generatedKey column="sys_dictionary_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_sys_menu" domainObjectName="SysMenuPO">
-        	<generatedKey column="sys_menu_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_sys_role" domainObjectName="SysRolePO">
-        	<generatedKey column="sys_role_id" sqlStatement="MySql" identity="true"/>
-        </table>
-		<table tableName="t_sys_role_menu_rel" domainObjectName="SysRoleMenuRelPO">
-        	<generatedKey column="sys_role_menu_rel_id" sqlStatement="MySql" identity="true"/>
-        </table>
 		<table tableName="t_sys_user" domainObjectName="SysUserPO">
         	<generatedKey column="sys_user_id" sqlStatement="MySql" identity="true"/>
         </table>
-		<table tableName="t_sys_user_role_rel" domainObjectName="SysUserRoleRelPO">
-        	<generatedKey column="sys_user_role_rel_id" sqlStatement="MySql" identity="true"/>
-        </table>
+
 </context>
 </generatorConfiguration>

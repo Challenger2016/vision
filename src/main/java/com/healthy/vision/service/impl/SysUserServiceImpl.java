@@ -32,7 +32,7 @@ public class SysUserServiceImpl implements SysUserService {
     String password = EncryptionUtils.md5(bo.getPassword());
     
     SysUserPOExample example = new SysUserPOExample();
-    example.createCriteria().andPhoneNumberEqualTo(phone).andPasswordEqualTo(password);
+    example.createCriteria().andPhoneEqualTo(phone).andPasswordEqualTo(password);
     
     List<SysUserPO> list = sysUserPOMapper.selectByExample(example);
     if (CollectionUtils.isEmpty(list)) {

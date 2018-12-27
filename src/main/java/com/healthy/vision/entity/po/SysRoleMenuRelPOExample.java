@@ -8,28 +8,28 @@ import java.util.List;
 public class SysRoleMenuRelPOExample implements Serializable {
     /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   protected String orderByClause;
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   protected boolean distinct;
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   protected List<Criteria> oredCriteria;
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   private static final long serialVersionUID = 1L;
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public SysRoleMenuRelPOExample() {
     oredCriteria = new ArrayList<Criteria>();
@@ -37,7 +37,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public void setOrderByClause(String orderByClause) {
     this.orderByClause = orderByClause;
@@ -45,7 +45,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public String getOrderByClause() {
     return orderByClause;
@@ -53,7 +53,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public void setDistinct(boolean distinct) {
     this.distinct = distinct;
@@ -61,7 +61,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public boolean isDistinct() {
     return distinct;
@@ -69,7 +69,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public List<Criteria> getOredCriteria() {
     return oredCriteria;
@@ -77,7 +77,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public void or(Criteria criteria) {
     oredCriteria.add(criteria);
@@ -85,7 +85,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public Criteria or() {
     Criteria criteria = createCriteriaInternal();
@@ -95,7 +95,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public Criteria createCriteria() {
     Criteria criteria = createCriteriaInternal();
@@ -107,7 +107,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   protected Criteria createCriteriaInternal() {
     Criteria criteria = new Criteria();
@@ -116,7 +116,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public void clear() {
     oredCriteria.clear();
@@ -126,7 +126,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. t_sys_role_menu_rel
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   protected abstract static class GeneratedCriteria implements Serializable {
     protected List<Criterion> criteria;
@@ -289,63 +289,63 @@ public class SysRoleMenuRelPOExample implements Serializable {
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdIsNull() {
-      addCriterion("def_menu_id is null");
+    public Criteria andSysMenuIdIsNull() {
+      addCriterion("sys_menu_id is null");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdIsNotNull() {
-      addCriterion("def_menu_id is not null");
+    public Criteria andSysMenuIdIsNotNull() {
+      addCriterion("sys_menu_id is not null");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdEqualTo(Integer value) {
-      addCriterion("def_menu_id =", value, "defMenuId");
+    public Criteria andSysMenuIdEqualTo(Integer value) {
+      addCriterion("sys_menu_id =", value, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdNotEqualTo(Integer value) {
-      addCriterion("def_menu_id <>", value, "defMenuId");
+    public Criteria andSysMenuIdNotEqualTo(Integer value) {
+      addCriterion("sys_menu_id <>", value, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdGreaterThan(Integer value) {
-      addCriterion("def_menu_id >", value, "defMenuId");
+    public Criteria andSysMenuIdGreaterThan(Integer value) {
+      addCriterion("sys_menu_id >", value, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdGreaterThanOrEqualTo(Integer value) {
-      addCriterion("def_menu_id >=", value, "defMenuId");
+    public Criteria andSysMenuIdGreaterThanOrEqualTo(Integer value) {
+      addCriterion("sys_menu_id >=", value, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdLessThan(Integer value) {
-      addCriterion("def_menu_id <", value, "defMenuId");
+    public Criteria andSysMenuIdLessThan(Integer value) {
+      addCriterion("sys_menu_id <", value, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdLessThanOrEqualTo(Integer value) {
-      addCriterion("def_menu_id <=", value, "defMenuId");
+    public Criteria andSysMenuIdLessThanOrEqualTo(Integer value) {
+      addCriterion("sys_menu_id <=", value, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdIn(List<Integer> values) {
-      addCriterion("def_menu_id in", values, "defMenuId");
+    public Criteria andSysMenuIdIn(List<Integer> values) {
+      addCriterion("sys_menu_id in", values, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdNotIn(List<Integer> values) {
-      addCriterion("def_menu_id not in", values, "defMenuId");
+    public Criteria andSysMenuIdNotIn(List<Integer> values) {
+      addCriterion("sys_menu_id not in", values, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdBetween(Integer value1, Integer value2) {
-      addCriterion("def_menu_id between", value1, value2, "defMenuId");
+    public Criteria andSysMenuIdBetween(Integer value1, Integer value2) {
+      addCriterion("sys_menu_id between", value1, value2, "sysMenuId");
       return (Criteria) this;
     }
 
-    public Criteria andDefMenuIdNotBetween(Integer value1, Integer value2) {
-      addCriterion("def_menu_id not between", value1, value2, "defMenuId");
+    public Criteria andSysMenuIdNotBetween(Integer value1, Integer value2) {
+      addCriterion("sys_menu_id not between", value1, value2, "sysMenuId");
       return (Criteria) this;
     }
 
@@ -862,7 +862,7 @@ public class SysRoleMenuRelPOExample implements Serializable {
 
   /**
    * 只读. t_sys_role_menu_rel
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:42:07
    */
   public static class Criterion implements Serializable {
     private String condition;

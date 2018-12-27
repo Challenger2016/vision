@@ -72,4 +72,7 @@ public interface SysMenuPOMapper {
    * @mbg.generated  2018-12-26 10:46:20
    */
   int updateByPrimaryKey(SysMenuPO record);
+  
+  List<SysMenuPO> selectBySysRoleId(@Param("sysRoleId") Integer sysRoleId);
+  
 }

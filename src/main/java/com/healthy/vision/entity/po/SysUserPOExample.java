@@ -8,28 +8,28 @@ import java.util.List;
 public class SysUserPOExample implements Serializable {
     /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   protected String orderByClause;
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   protected boolean distinct;
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   protected List<Criteria> oredCriteria;
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   private static final long serialVersionUID = 1L;
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public SysUserPOExample() {
     oredCriteria = new ArrayList<Criteria>();
@@ -37,7 +37,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public void setOrderByClause(String orderByClause) {
     this.orderByClause = orderByClause;
@@ -45,7 +45,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public String getOrderByClause() {
     return orderByClause;
@@ -53,7 +53,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public void setDistinct(boolean distinct) {
     this.distinct = distinct;
@@ -61,7 +61,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public boolean isDistinct() {
     return distinct;
@@ -69,7 +69,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public List<Criteria> getOredCriteria() {
     return oredCriteria;
@@ -77,7 +77,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public void or(Criteria criteria) {
     oredCriteria.add(criteria);
@@ -85,7 +85,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public Criteria or() {
     Criteria criteria = createCriteriaInternal();
@@ -95,7 +95,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public Criteria createCriteria() {
     Criteria criteria = createCriteriaInternal();
@@ -107,7 +107,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   protected Criteria createCriteriaInternal() {
     Criteria criteria = new Criteria();
@@ -116,7 +116,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. 
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public void clear() {
     oredCriteria.clear();
@@ -126,7 +126,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. t_sys_user
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   protected abstract static class GeneratedCriteria implements Serializable {
     protected List<Criterion> criteria;
@@ -179,52 +179,52 @@ public class SysUserPOExample implements Serializable {
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdEqualTo(Long value) {
+    public Criteria andSysUserIdEqualTo(Integer value) {
       addCriterion("sys_user_id =", value, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdNotEqualTo(Long value) {
+    public Criteria andSysUserIdNotEqualTo(Integer value) {
       addCriterion("sys_user_id <>", value, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdGreaterThan(Long value) {
+    public Criteria andSysUserIdGreaterThan(Integer value) {
       addCriterion("sys_user_id >", value, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdGreaterThanOrEqualTo(Long value) {
+    public Criteria andSysUserIdGreaterThanOrEqualTo(Integer value) {
       addCriterion("sys_user_id >=", value, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdLessThan(Long value) {
+    public Criteria andSysUserIdLessThan(Integer value) {
       addCriterion("sys_user_id <", value, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdLessThanOrEqualTo(Long value) {
+    public Criteria andSysUserIdLessThanOrEqualTo(Integer value) {
       addCriterion("sys_user_id <=", value, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdIn(List<Long> values) {
+    public Criteria andSysUserIdIn(List<Integer> values) {
       addCriterion("sys_user_id in", values, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdNotIn(List<Long> values) {
+    public Criteria andSysUserIdNotIn(List<Integer> values) {
       addCriterion("sys_user_id not in", values, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdBetween(Long value1, Long value2) {
+    public Criteria andSysUserIdBetween(Integer value1, Integer value2) {
       addCriterion("sys_user_id between", value1, value2, "sysUserId");
       return (Criteria) this;
     }
 
-    public Criteria andSysUserIdNotBetween(Long value1, Long value2) {
+    public Criteria andSysUserIdNotBetween(Integer value1, Integer value2) {
       addCriterion("sys_user_id not between", value1, value2, "sysUserId");
       return (Criteria) this;
     }
@@ -369,73 +369,73 @@ public class SysUserPOExample implements Serializable {
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberIsNull() {
-      addCriterion("phone_number is null");
+    public Criteria andPhoneIsNull() {
+      addCriterion("phone is null");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberIsNotNull() {
-      addCriterion("phone_number is not null");
+    public Criteria andPhoneIsNotNull() {
+      addCriterion("phone is not null");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberEqualTo(String value) {
-      addCriterion("phone_number =", value, "phoneNumber");
+    public Criteria andPhoneEqualTo(String value) {
+      addCriterion("phone =", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberNotEqualTo(String value) {
-      addCriterion("phone_number <>", value, "phoneNumber");
+    public Criteria andPhoneNotEqualTo(String value) {
+      addCriterion("phone <>", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberGreaterThan(String value) {
-      addCriterion("phone_number >", value, "phoneNumber");
+    public Criteria andPhoneGreaterThan(String value) {
+      addCriterion("phone >", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberGreaterThanOrEqualTo(String value) {
-      addCriterion("phone_number >=", value, "phoneNumber");
+    public Criteria andPhoneGreaterThanOrEqualTo(String value) {
+      addCriterion("phone >=", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberLessThan(String value) {
-      addCriterion("phone_number <", value, "phoneNumber");
+    public Criteria andPhoneLessThan(String value) {
+      addCriterion("phone <", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberLessThanOrEqualTo(String value) {
-      addCriterion("phone_number <=", value, "phoneNumber");
+    public Criteria andPhoneLessThanOrEqualTo(String value) {
+      addCriterion("phone <=", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberLike(String value) {
-      addCriterion("phone_number like", value, "phoneNumber");
+    public Criteria andPhoneLike(String value) {
+      addCriterion("phone like", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberNotLike(String value) {
-      addCriterion("phone_number not like", value, "phoneNumber");
+    public Criteria andPhoneNotLike(String value) {
+      addCriterion("phone not like", value, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberIn(List<String> values) {
-      addCriterion("phone_number in", values, "phoneNumber");
+    public Criteria andPhoneIn(List<String> values) {
+      addCriterion("phone in", values, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberNotIn(List<String> values) {
-      addCriterion("phone_number not in", values, "phoneNumber");
+    public Criteria andPhoneNotIn(List<String> values) {
+      addCriterion("phone not in", values, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberBetween(String value1, String value2) {
-      addCriterion("phone_number between", value1, value2, "phoneNumber");
+    public Criteria andPhoneBetween(String value1, String value2) {
+      addCriterion("phone between", value1, value2, "phone");
       return (Criteria) this;
     }
 
-    public Criteria andPhoneNumberNotBetween(String value1, String value2) {
-      addCriterion("phone_number not between", value1, value2, "phoneNumber");
+    public Criteria andPhoneNotBetween(String value1, String value2) {
+      addCriterion("phone not between", value1, value2, "phone");
       return (Criteria) this;
     }
 
@@ -779,52 +779,52 @@ public class SysUserPOExample implements Serializable {
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdEqualTo(Long value) {
+    public Criteria andCreateUserIdEqualTo(Integer value) {
       addCriterion("create_user_id =", value, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdNotEqualTo(Long value) {
+    public Criteria andCreateUserIdNotEqualTo(Integer value) {
       addCriterion("create_user_id <>", value, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdGreaterThan(Long value) {
+    public Criteria andCreateUserIdGreaterThan(Integer value) {
       addCriterion("create_user_id >", value, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdGreaterThanOrEqualTo(Long value) {
+    public Criteria andCreateUserIdGreaterThanOrEqualTo(Integer value) {
       addCriterion("create_user_id >=", value, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdLessThan(Long value) {
+    public Criteria andCreateUserIdLessThan(Integer value) {
       addCriterion("create_user_id <", value, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdLessThanOrEqualTo(Long value) {
+    public Criteria andCreateUserIdLessThanOrEqualTo(Integer value) {
       addCriterion("create_user_id <=", value, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdIn(List<Long> values) {
+    public Criteria andCreateUserIdIn(List<Integer> values) {
       addCriterion("create_user_id in", values, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdNotIn(List<Long> values) {
+    public Criteria andCreateUserIdNotIn(List<Integer> values) {
       addCriterion("create_user_id not in", values, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdBetween(Long value1, Long value2) {
+    public Criteria andCreateUserIdBetween(Integer value1, Integer value2) {
       addCriterion("create_user_id between", value1, value2, "createUserId");
       return (Criteria) this;
     }
 
-    public Criteria andCreateUserIdNotBetween(Long value1, Long value2) {
+    public Criteria andCreateUserIdNotBetween(Integer value1, Integer value2) {
       addCriterion("create_user_id not between", value1, value2, "createUserId");
       return (Criteria) this;
     }
@@ -969,52 +969,52 @@ public class SysUserPOExample implements Serializable {
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdEqualTo(Long value) {
+    public Criteria andModifiedUserIdEqualTo(Integer value) {
       addCriterion("modified_user_id =", value, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdNotEqualTo(Long value) {
+    public Criteria andModifiedUserIdNotEqualTo(Integer value) {
       addCriterion("modified_user_id <>", value, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdGreaterThan(Long value) {
+    public Criteria andModifiedUserIdGreaterThan(Integer value) {
       addCriterion("modified_user_id >", value, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdGreaterThanOrEqualTo(Long value) {
+    public Criteria andModifiedUserIdGreaterThanOrEqualTo(Integer value) {
       addCriterion("modified_user_id >=", value, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdLessThan(Long value) {
+    public Criteria andModifiedUserIdLessThan(Integer value) {
       addCriterion("modified_user_id <", value, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdLessThanOrEqualTo(Long value) {
+    public Criteria andModifiedUserIdLessThanOrEqualTo(Integer value) {
       addCriterion("modified_user_id <=", value, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdIn(List<Long> values) {
+    public Criteria andModifiedUserIdIn(List<Integer> values) {
       addCriterion("modified_user_id in", values, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdNotIn(List<Long> values) {
+    public Criteria andModifiedUserIdNotIn(List<Integer> values) {
       addCriterion("modified_user_id not in", values, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdBetween(Long value1, Long value2) {
+    public Criteria andModifiedUserIdBetween(Integer value1, Integer value2) {
       addCriterion("modified_user_id between", value1, value2, "modifiedUserId");
       return (Criteria) this;
     }
 
-    public Criteria andModifiedUserIdNotBetween(Long value1, Long value2) {
+    public Criteria andModifiedUserIdNotBetween(Integer value1, Integer value2) {
       addCriterion("modified_user_id not between", value1, value2, "modifiedUserId");
       return (Criteria) this;
     }
@@ -1212,7 +1212,7 @@ public class SysUserPOExample implements Serializable {
 
   /**
    * 只读. t_sys_user
-   * @mbg.generated  2018-12-26 10:46:20
+   * @mbg.generated  2018-12-27 15:44:14
    */
   public static class Criterion implements Serializable {
     private String condition;

@@ -646,7 +646,21 @@
       valid = #{valid,jdbcType=BIT}
     where check_record_id = #{checkRecordId,jdbcType=INTEGER}
   </update>
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
+
+<select id="selectByUser" parameterType="com.healthy.vision.entity.po.WxUserPO" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_check_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+
 </mapper>

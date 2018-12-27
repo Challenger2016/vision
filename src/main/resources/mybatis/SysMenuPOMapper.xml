@@ -427,7 +427,24 @@
       valid = #{valid,jdbcType=BIT}
     where sys_menu_id = #{sysMenuId,jdbcType=INTEGER}
   </update>
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
-  <cache type="com.healthy.vision.common.redis.RedisCache" />
+
+<select id="selectBySysRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	SELECT
+		m.sys_menu_id,
+		m.menu_code,
+		m.menu_name,
+		m.pre_menu_id,
+		m.url,
+		m.icon,
+		m.sort
+	FROM
+		t_sys_role_menu_rel r
+	JOIN t_sys_menu m ON r.sys_menu_id = m.sys_menu_id
+	WHERE
+		r.sys_role_id = #{sysRoleId,jdbcType=INTEGER}
+	AND r.valid = 1
+	AND m.valid = 1
+	ORDER BY
+		m.sort
+  </select>
 </mapper>

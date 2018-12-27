@@ -5,11 +5,11 @@
   <resultMap id="BaseResultMap" type="com.healthy.vision.entity.po.SysRoleMenuRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     <id column="sys_role_menu_rel_id" jdbcType="INTEGER" property="sysRoleMenuRelId" />
     <result column="sys_role_id" jdbcType="INTEGER" property="sysRoleId" />
-    <result column="def_menu_id" jdbcType="INTEGER" property="defMenuId" />
+    <result column="sys_menu_id" jdbcType="INTEGER" property="sysMenuId" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
     <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
@@ -22,7 +22,7 @@
   <sql id="Example_Where_Clause">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -55,7 +55,7 @@
   <sql id="Update_By_Example_Where_Clause">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     <where>
       <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -88,15 +88,15 @@
   <sql id="Base_Column_List">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
-    sys_role_menu_rel_id, sys_role_id, def_menu_id, remark, create_user_id, create_user_name, 
+    sys_role_menu_rel_id, sys_role_id, sys_menu_id, remark, create_user_id, create_user_name, 
     create_date, modified_user_id, modified_user_name, modified_date, valid
   </sql>
   <select id="selectByExample" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPOExample" resultMap="BaseResultMap">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     select
     <if test="distinct">
@@ -114,7 +114,7 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     select 
     <include refid="Base_Column_List" />
@@ -124,7 +124,7 @@
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     delete from t_sys_role_menu_rel
     where sys_role_menu_rel_id = #{sysRoleMenuRelId,jdbcType=INTEGER}
@@ -132,7 +132,7 @@
   <delete id="deleteByExample" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPOExample">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     delete from t_sys_role_menu_rel
     <if test="_parameter != null">
@@ -142,16 +142,16 @@
   <insert id="insert" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     <selectKey keyProperty="sysRoleMenuRelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_sys_role_menu_rel (sys_role_id, def_menu_id, remark, 
+    insert into t_sys_role_menu_rel (sys_role_id, sys_menu_id, remark, 
       create_user_id, create_user_name, create_date, 
       modified_user_id, modified_user_name, modified_date, 
       valid)
-    values (#{sysRoleId,jdbcType=INTEGER}, #{defMenuId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+    values (#{sysRoleId,jdbcType=INTEGER}, #{sysMenuId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
       #{createUserId,jdbcType=INTEGER}, #{createUserName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{modifiedUserId,jdbcType=INTEGER}, #{modifiedUserName,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, 
       #{valid,jdbcType=BIT})
@@ -159,7 +159,7 @@
   <insert id="insertSelective" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     <selectKey keyProperty="sysRoleMenuRelId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
@@ -169,8 +169,8 @@
       <if test="sysRoleId != null">
         sys_role_id,
       </if>
-      <if test="defMenuId != null">
-        def_menu_id,
+      <if test="sysMenuId != null">
+        sys_menu_id,
       </if>
       <if test="remark != null">
         remark,
@@ -201,8 +201,8 @@
       <if test="sysRoleId != null">
         #{sysRoleId,jdbcType=INTEGER},
       </if>
-      <if test="defMenuId != null">
-        #{defMenuId,jdbcType=INTEGER},
+      <if test="sysMenuId != null">
+        #{sysMenuId,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
@@ -233,7 +233,7 @@
   <select id="countByExample" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPOExample" resultType="java.lang.Long">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     select count(*) from t_sys_role_menu_rel
     <if test="_parameter != null">
@@ -243,7 +243,7 @@
   <update id="updateByExampleSelective" parameterType="map">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     update t_sys_role_menu_rel
     <set>
@@ -253,8 +253,8 @@
       <if test="record.sysRoleId != null">
         sys_role_id = #{record.sysRoleId,jdbcType=INTEGER},
       </if>
-      <if test="record.defMenuId != null">
-        def_menu_id = #{record.defMenuId,jdbcType=INTEGER},
+      <if test="record.sysMenuId != null">
+        sys_menu_id = #{record.sysMenuId,jdbcType=INTEGER},
       </if>
       <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
@@ -288,12 +288,12 @@
   <update id="updateByExample" parameterType="map">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     update t_sys_role_menu_rel
     set sys_role_menu_rel_id = #{record.sysRoleMenuRelId,jdbcType=INTEGER},
       sys_role_id = #{record.sysRoleId,jdbcType=INTEGER},
-      def_menu_id = #{record.defMenuId,jdbcType=INTEGER},
+      sys_menu_id = #{record.sysMenuId,jdbcType=INTEGER},
       remark = #{record.remark,jdbcType=VARCHAR},
       create_user_id = #{record.createUserId,jdbcType=INTEGER},
       create_user_name = #{record.createUserName,jdbcType=VARCHAR},
@@ -309,15 +309,15 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     update t_sys_role_menu_rel
     <set>
       <if test="sysRoleId != null">
         sys_role_id = #{sysRoleId,jdbcType=INTEGER},
       </if>
-      <if test="defMenuId != null">
-        def_menu_id = #{defMenuId,jdbcType=INTEGER},
+      <if test="sysMenuId != null">
+        sys_menu_id = #{sysMenuId,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
@@ -349,11 +349,11 @@
   <update id="updateByPrimaryKey" parameterType="com.healthy.vision.entity.po.SysRoleMenuRelPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:42:07.
     -->
     update t_sys_role_menu_rel
     set sys_role_id = #{sysRoleId,jdbcType=INTEGER},
-      def_menu_id = #{defMenuId,jdbcType=INTEGER},
+      sys_menu_id = #{sysMenuId,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
       create_user_id = #{createUserId,jdbcType=INTEGER},
       create_user_name = #{createUserName,jdbcType=VARCHAR},
@@ -364,6 +364,7 @@
       valid = #{valid,jdbcType=BIT}
     where sys_role_menu_rel_id = #{sysRoleMenuRelId,jdbcType=INTEGER}
   </update>
+  <cache type="com.healthy.vision.common.redis.RedisCache" />
   <cache type="com.healthy.vision.common.redis.RedisCache" />
   <cache type="com.healthy.vision.common.redis.RedisCache" />
   <cache type="com.healthy.vision.common.redis.RedisCache" />

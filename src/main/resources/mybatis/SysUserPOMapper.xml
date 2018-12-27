@@ -5,21 +5,21 @@
   <resultMap id="BaseResultMap" type="com.healthy.vision.entity.po.SysUserPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
-    <id column="sys_user_id" jdbcType="BIGINT" property="sysUserId" />
+    <id column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
     <result column="sys_user_code" jdbcType="VARCHAR" property="sysUserCode" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="position" jdbcType="VARCHAR" property="position" />
     <result column="status" jdbcType="BIT" property="status" />
     <result column="last_login_date" jdbcType="TIMESTAMP" property="lastLoginDate" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
-    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
     <result column="create_user_name" jdbcType="VARCHAR" property="createUserName" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="modified_user_id" jdbcType="BIGINT" property="modifiedUserId" />
+    <result column="modified_user_id" jdbcType="INTEGER" property="modifiedUserId" />
     <result column="modified_user_name" jdbcType="VARCHAR" property="modifiedUserName" />
     <result column="modified_date" jdbcType="TIMESTAMP" property="modifiedDate" />
     <result column="valid" jdbcType="BIT" property="valid" />
@@ -27,7 +27,7 @@
   <sql id="Example_Where_Clause">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -60,7 +60,7 @@
   <sql id="Update_By_Example_Where_Clause">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     <where>
       <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -93,16 +93,16 @@
   <sql id="Base_Column_List">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
-    sys_user_id, sys_user_code, password, phone_number, name, position, status, last_login_date, 
+    sys_user_id, sys_user_code, password, phone, name, position, status, last_login_date, 
     remark, create_user_id, create_user_name, create_date, modified_user_id, modified_user_name, 
     modified_date, valid
   </sql>
   <select id="selectByExample" parameterType="com.healthy.vision.entity.po.SysUserPOExample" resultMap="BaseResultMap">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     select
     <if test="distinct">
@@ -117,28 +117,28 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     select 
     <include refid="Base_Column_List" />
     from t_sys_user
-    where sys_user_id = #{sysUserId,jdbcType=BIGINT}
+    where sys_user_id = #{sysUserId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     delete from t_sys_user
-    where sys_user_id = #{sysUserId,jdbcType=BIGINT}
+    where sys_user_id = #{sysUserId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.healthy.vision.entity.po.SysUserPOExample">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     delete from t_sys_user
     <if test="_parameter != null">
@@ -148,30 +148,30 @@
   <insert id="insert" parameterType="com.healthy.vision.entity.po.SysUserPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
-    <selectKey keyProperty="sysUserId" order="AFTER" resultType="java.lang.Long">
+    <selectKey keyProperty="sysUserId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_sys_user (sys_user_code, password, phone_number, 
+    insert into t_sys_user (sys_user_code, password, phone, 
       name, position, status, 
       last_login_date, remark, create_user_id, 
       create_user_name, create_date, modified_user_id, 
       modified_user_name, modified_date, valid
       )
-    values (#{sysUserCode,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+    values (#{sysUserCode,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, 
-      #{lastLoginDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=BIGINT}, 
-      #{createUserName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifiedUserId,jdbcType=BIGINT}, 
+      #{lastLoginDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, 
+      #{createUserName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{modifiedUserId,jdbcType=INTEGER}, 
       #{modifiedUserName,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=TIMESTAMP}, #{valid,jdbcType=BIT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.healthy.vision.entity.po.SysUserPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
-    <selectKey keyProperty="sysUserId" order="AFTER" resultType="java.lang.Long">
+    <selectKey keyProperty="sysUserId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_sys_user
@@ -182,8 +182,8 @@
       <if test="password != null">
         password,
       </if>
-      <if test="phoneNumber != null">
-        phone_number,
+      <if test="phone != null">
+        phone,
       </if>
       <if test="name != null">
         name,
@@ -229,8 +229,8 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="phoneNumber != null">
-        #{phoneNumber,jdbcType=VARCHAR},
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -248,7 +248,7 @@
         #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createUserId != null">
-        #{createUserId,jdbcType=BIGINT},
+        #{createUserId,jdbcType=INTEGER},
       </if>
       <if test="createUserName != null">
         #{createUserName,jdbcType=VARCHAR},
@@ -257,7 +257,7 @@
         #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="modifiedUserId != null">
-        #{modifiedUserId,jdbcType=BIGINT},
+        #{modifiedUserId,jdbcType=INTEGER},
       </if>
       <if test="modifiedUserName != null">
         #{modifiedUserName,jdbcType=VARCHAR},
@@ -273,7 +273,7 @@
   <select id="countByExample" parameterType="com.healthy.vision.entity.po.SysUserPOExample" resultType="java.lang.Long">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     select count(*) from t_sys_user
     <if test="_parameter != null">
@@ -283,12 +283,12 @@
   <update id="updateByExampleSelective" parameterType="map">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     update t_sys_user
     <set>
       <if test="record.sysUserId != null">
-        sys_user_id = #{record.sysUserId,jdbcType=BIGINT},
+        sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
       </if>
       <if test="record.sysUserCode != null">
         sys_user_code = #{record.sysUserCode,jdbcType=VARCHAR},
@@ -296,8 +296,8 @@
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.phoneNumber != null">
-        phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -315,7 +315,7 @@
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
       <if test="record.createUserId != null">
-        create_user_id = #{record.createUserId,jdbcType=BIGINT},
+        create_user_id = #{record.createUserId,jdbcType=INTEGER},
       </if>
       <if test="record.createUserName != null">
         create_user_name = #{record.createUserName,jdbcType=VARCHAR},
@@ -324,7 +324,7 @@
         create_date = #{record.createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.modifiedUserId != null">
-        modified_user_id = #{record.modifiedUserId,jdbcType=BIGINT},
+        modified_user_id = #{record.modifiedUserId,jdbcType=INTEGER},
       </if>
       <if test="record.modifiedUserName != null">
         modified_user_name = #{record.modifiedUserName,jdbcType=VARCHAR},
@@ -343,22 +343,22 @@
   <update id="updateByExample" parameterType="map">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     update t_sys_user
-    set sys_user_id = #{record.sysUserId,jdbcType=BIGINT},
+    set sys_user_id = #{record.sysUserId,jdbcType=INTEGER},
       sys_user_code = #{record.sysUserCode,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      phone_number = #{record.phoneNumber,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       position = #{record.position,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=BIT},
       last_login_date = #{record.lastLoginDate,jdbcType=TIMESTAMP},
       remark = #{record.remark,jdbcType=VARCHAR},
-      create_user_id = #{record.createUserId,jdbcType=BIGINT},
+      create_user_id = #{record.createUserId,jdbcType=INTEGER},
       create_user_name = #{record.createUserName,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
-      modified_user_id = #{record.modifiedUserId,jdbcType=BIGINT},
+      modified_user_id = #{record.modifiedUserId,jdbcType=INTEGER},
       modified_user_name = #{record.modifiedUserName,jdbcType=VARCHAR},
       modified_date = #{record.modifiedDate,jdbcType=TIMESTAMP},
       valid = #{record.valid,jdbcType=BIT}
@@ -369,7 +369,7 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.healthy.vision.entity.po.SysUserPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     update t_sys_user
     <set>
@@ -379,8 +379,8 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="phoneNumber != null">
-        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -398,7 +398,7 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createUserId != null">
-        create_user_id = #{createUserId,jdbcType=BIGINT},
+        create_user_id = #{createUserId,jdbcType=INTEGER},
       </if>
       <if test="createUserName != null">
         create_user_name = #{createUserName,jdbcType=VARCHAR},
@@ -407,7 +407,7 @@
         create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="modifiedUserId != null">
-        modified_user_id = #{modifiedUserId,jdbcType=BIGINT},
+        modified_user_id = #{modifiedUserId,jdbcType=INTEGER},
       </if>
       <if test="modifiedUserName != null">
         modified_user_name = #{modifiedUserName,jdbcType=VARCHAR},
@@ -419,31 +419,32 @@
         valid = #{valid,jdbcType=BIT},
       </if>
     </set>
-    where sys_user_id = #{sysUserId,jdbcType=BIGINT}
+    where sys_user_id = #{sysUserId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.healthy.vision.entity.po.SysUserPO">
     <!--
       WARNING - 只读 - @mbg.generated
-      This element was generated on 2018-12-26 10:46:20.
+      This element was generated on 2018-12-27 15:44:14.
     -->
     update t_sys_user
     set sys_user_code = #{sysUserCode,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       status = #{status,jdbcType=BIT},
       last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
-      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
       create_user_name = #{createUserName,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
-      modified_user_id = #{modifiedUserId,jdbcType=BIGINT},
+      modified_user_id = #{modifiedUserId,jdbcType=INTEGER},
       modified_user_name = #{modifiedUserName,jdbcType=VARCHAR},
       modified_date = #{modifiedDate,jdbcType=TIMESTAMP},
       valid = #{valid,jdbcType=BIT}
-    where sys_user_id = #{sysUserId,jdbcType=BIGINT}
+    where sys_user_id = #{sysUserId,jdbcType=INTEGER}
   </update>
+  <cache type="com.healthy.vision.common.redis.RedisCache" />
   <cache type="com.healthy.vision.common.redis.RedisCache" />
   <cache type="com.healthy.vision.common.redis.RedisCache" />
   <cache type="com.healthy.vision.common.redis.RedisCache" />
