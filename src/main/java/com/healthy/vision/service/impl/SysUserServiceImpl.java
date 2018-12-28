@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.healthy.vision.common.constants.SystemConstants;
 import com.healthy.vision.common.enums.SysResponseEnum;
 import com.healthy.vision.common.utils.EncryptionUtils;
 import com.healthy.vision.entity.bo.SysUserAddBO;
@@ -188,6 +189,36 @@ public class SysUserServiceImpl implements SysUserService {
   public ResponseData<Object> delete(Integer sysUserId, SysUserPO sysUserPO) {
 
     sysUserPOMapper.deleteByPrimaryKey(sysUserId);
+    return new ResponseData<>();
+  }
+
+  @Override
+  public ResponseData<Object> disable(Integer sysUserId, SysUserPO sysUserPO) {
+
+    SysUserPO record = new SysUserPO();
+    record.setSysUserId(sysUserId);
+    record.setStatus(SystemConstants.SYS_USER_STATUS_DISABLE);
+    record.setModifiedDate(new Date());
+    record.setModifiedUserId(sysUserPO.getSysUserId());
+    record.setModifiedUserName(sysUserPO.getName());
+    
+    sysUserPOMapper.updateByPrimaryKeySelective(record);
+    
+    return new ResponseData<>();
+  }
+
+  @Override
+  public ResponseData<Object> enable(Integer sysUserId, SysUserPO sysUserPO) {
+
+    SysUserPO record = new SysUserPO();
+    record.setSysUserId(sysUserId);
+    record.setStatus(SystemConstants.SYS_USER_STATUS_ENABLE);
+    record.setModifiedDate(new Date());
+    record.setModifiedUserId(sysUserPO.getSysUserId());
+    record.setModifiedUserName(sysUserPO.getName());
+    
+    sysUserPOMapper.updateByPrimaryKeySelective(record);
+    
     return new ResponseData<>();
   }
 

@@ -5,13 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
-import com.healthy.vision.common.redis.RedisClient;
 import com.healthy.vision.entity.bo.SysRoleAddBO;
 import com.healthy.vision.entity.bo.SysRoleGetListBO;
 import com.healthy.vision.entity.bo.SysRoleUpdateBO;
@@ -24,7 +24,7 @@ import com.healthy.vision.service.SysRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@RequestMapping("/sysRole")
+@RequestMapping("/sys-role")
 @RestController
 @Api(value = "角色相关接口")
 public class SysRoleController {
@@ -45,8 +45,8 @@ public class SysRoleController {
 
 
   @ApiOperation(value = "删除角色")
-  @RequestMapping(value = "/delete", method = RequestMethod.POST)
-  public ResponseData<Object> delete(Integer sysRoleId, HttpServletRequest request) {
+  @RequestMapping(value = "/delete/{sysRoleId}", method = RequestMethod.POST)
+  public ResponseData<Object> delete(@PathVariable("sysRoleId")Integer sysRoleId, HttpServletRequest request) {
 
     SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
     return this.sysRoleService.delete(sysRoleId, sysUserPO);
@@ -55,15 +55,15 @@ public class SysRoleController {
 
 
   @ApiOperation(value = "查找角色")
-  @RequestMapping(value = "/find", method = RequestMethod.POST)
-  public ResponseData<SysRolePO> find(Integer sysRoleId) {
+  @RequestMapping(value = "/find/{sysRoleId}", method = RequestMethod.POST)
+  public ResponseData<SysRolePO> find(@PathVariable("sysRoleId")Integer sysRoleId) {
     
     return this.sysRoleService.find(sysRoleId);
 
   }
   
-  @ApiOperation(value = "获取用户菜单权限")
-  @RequestMapping(value = "/findMenus", method = RequestMethod.POST)
+  @ApiOperation(value = "获取当前用户菜单权限")
+  @RequestMapping(value = "/find-menus", method = RequestMethod.POST)
   public ResponseData<List<SysMenuVO>> findMenus(HttpServletRequest request) {
     
     SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
@@ -74,7 +74,7 @@ public class SysRoleController {
 
 
   @ApiOperation(value = "查询角色列表")
-  @RequestMapping(value = "/getList", method = RequestMethod.POST)
+  @RequestMapping(value = "/list", method = RequestMethod.POST)
   public ResponseData<PageInfo<SysRolePO>> getList(@RequestBody SysRoleGetListBO bo) {
     return this.sysRoleService.getList(bo);
 
@@ -82,8 +82,8 @@ public class SysRoleController {
 
 
   @ApiOperation(value = "更新角色")
-  @RequestMapping(value = "/update", method = RequestMethod.POST)
-  public ResponseData<Object> update(@RequestBody SysRoleUpdateBO bo, HttpServletRequest request) {
+  @RequestMapping(value = "/update/{sysRoleId}", method = RequestMethod.POST)
+  public ResponseData<Object> update(@PathVariable("sysRoleId")Integer sysRoleId, @RequestBody SysRoleUpdateBO bo, HttpServletRequest request) {
 
     SysUserPO sysUserPO = HttpUtils.getLoginSysUserPO(request);
     return this.sysRoleService.update(bo, sysUserPO);

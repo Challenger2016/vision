@@ -53,6 +53,21 @@ public interface SysUserService {
   ResponseData<Object> update(SysUserUpdateBO bo, SysUserPO sysUserPO);
   
   /**
+   * 禁用用户
+   * @param po
+   * @return
+   */
+  ResponseData<Object> disable(Integer sysUserId, SysUserPO sysUserPO);
+  
+  /**
+   * 启用用户
+   * @param po
+   * @return
+   */
+  ResponseData<Object> enable(Integer sysUserId, SysUserPO sysUserPO);
+  
+  
+  /**
    * 删除用户数据
    * @return
    */
